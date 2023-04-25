@@ -8,7 +8,6 @@ import {
   ViewStyle,
 } from "react-native";
 import { ReactNode } from "react";
-import Icon from "react-native-vector-icons/AntDesign";
 import { width, height } from "../../constants/constants";
 
 interface RoundedButtonProps {
@@ -25,8 +24,6 @@ const RoundedButton: React.FC<RoundedButtonProps> = ({
   buttonStyle,
 }) => {
   const [buttonColor, setButtonColor] = useState("#EF8224");
-
-  const ArrowRight = <Icon name="arrowright" size={30} color={buttonColor} />;
 
   const handleButtonPressIn = () => {
     setButtonColor("#FDC90D");
@@ -47,9 +44,6 @@ const RoundedButton: React.FC<RoundedButtonProps> = ({
         <View
           style={[styles.button, { backgroundColor: buttonColor }, buttonStyle]}
         >
-          {icon && (
-            <View style={[styles.icon, styles.shadow]}>{ArrowRight}</View>
-          )}
           <Text style={styles.text}>{text}</Text>
         </View>
       </TouchableOpacity>
@@ -75,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     paddingHorizontal: 8,
     minWidth: 160,
-    width: width * 0.4,
+    width: width * 0.8,
     flexDirection: "row",
   },
   text: {
