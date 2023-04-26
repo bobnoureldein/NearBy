@@ -12,6 +12,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: height * 0.05,
   },
+  linear: {
+    width: width,
+    height: height,
+  },
   subContainer: {
     alignItems: "center",
   },

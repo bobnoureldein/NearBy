@@ -2,7 +2,11 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import RoundedButton from "../../components/RoundedButton/roundButton";
-import { mainColor, secondaryColor } from "../../constants/constants";
+import {
+  backgroundColorRGBA,
+  mainColor,
+  secondaryColor,
+} from "../../constants/constants";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
@@ -21,8 +25,8 @@ const Next = ({ navigation }: Props) => {
         secondaryColor,
         secondaryColor,
         secondaryColor,
-        "#fff",
-        "#fff",
+        backgroundColorRGBA,
+        backgroundColorRGBA,
       ]}
       style={{ height: "100%", width: "100%" }}
     >

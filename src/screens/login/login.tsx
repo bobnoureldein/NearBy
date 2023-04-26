@@ -6,6 +6,10 @@ import MainButton from "../../components/MainButton/mainButton";
 import Logo from "../../images/logo.jsx";
 import styles from "./styles";
 import { RootStackParamList } from "../../navigation/navigation";
+import {
+  backgroundColorRGBA,
+  backgroundColorRGBAOpacity,
+} from "../../constants/constants";
 
 const backgroundImage = require("../../images/villa.png");
 
@@ -23,13 +27,13 @@ const Login = ({ navigation }: Props) => {
     <ImageBackground source={backgroundImage} style={styles.background}>
       <LinearGradient
         colors={[
-          "rgba(245, 245, 245, 1)",
+          backgroundColorRGBA,
           "transparent",
-          "rgba(245, 245, 245, .8)",
-          "rgba(245, 245, 245, 1)",
-          "rgba(245, 245, 245, 1)",
+          backgroundColorRGBAOpacity,
+          backgroundColorRGBA,
+          backgroundColorRGBA,
         ]}
-        style={{ height: "100%", width: "100%" }}
+        style={styles.linear}
       >
         <View style={styles.main}>
           <Logo style={styles.logo} />

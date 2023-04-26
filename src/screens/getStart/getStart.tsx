@@ -6,6 +6,10 @@ import RoundedButton from "../../components/RoundedButton/roundButton";
 import Logo from "../../images/logo.jsx";
 import styles from "./styles";
 import { RootStackParamList } from "../../navigation/navigation";
+import {
+  backgroundColorRGBA,
+  backgroundColorRGBAOpacity,
+} from "../../constants/constants";
 
 const backgroundImage = require("../../images/unsplash.png");
 
@@ -26,8 +30,8 @@ const GetStart = ({ navigation }: Props) => {
           "transparent",
           "transparent",
           "transparent",
-          "rgba(255, 255, 255, .7)",
-          "rgba(255, 255, 255, 1)",
+          backgroundColorRGBAOpacity,
+          backgroundColorRGBA,
         ]}
         style={styles.linear}
       >
