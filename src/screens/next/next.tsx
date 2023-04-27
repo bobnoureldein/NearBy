@@ -28,7 +28,7 @@ const Next = ({ navigation }: Props) => {
         backgroundColorRGBA,
         backgroundColorRGBA,
       ]}
-      style={{ height: "100%", width: "100%" }}
+      style={styles.linear}
     >
       <View style={styles.main}>
         <View style={styles.imageContainer}>

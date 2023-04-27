@@ -8,7 +8,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { ReactNode } from "react";
-import { width, height } from "../../constants/constants";
+import { width } from "../../constants/constants";
 
 interface RoundedButtonProps {
   text: string;

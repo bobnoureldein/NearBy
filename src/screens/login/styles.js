@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { height, width } from "../../constants/constants";
+import { height, width, mainColor } from "../../constants/constants";
 
 const styles = StyleSheet.create({
   background: {
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     alignItems: "center",
+    marginTop: 24,
   },
   logo: {
     marginTop: "30%",
@@ -28,6 +29,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "900",
     marginBottom: height * 0.05,
+    paddingHorizontal: width * 0.1,
+  },
+  secondaryText: {
+    fontSize: 24,
+    color: mainColor,
+    textAlign: "center",
+    fontWeight: "700",
+    marginTop: height * 0.05,
     paddingHorizontal: width * 0.1,
   },
 });
