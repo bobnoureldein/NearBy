@@ -22,32 +22,28 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: height * 0.1,
   },
-
   text: {
     fontSize: 32,
     color: "#000",
     textAlign: "center",
     fontWeight: "900",
+    marginTop: height * 0.1,
     marginBottom: height * 0.05,
     paddingHorizontal: width * 0.1,
+  },
+  subText: {
+    width: width * 0.8,
+    textAlign: "center",
+    fontSize: 16,
+    marginVertical: 5,
   },
   secondaryText: {
     fontSize: 24,
     color: mainColor,
     textAlign: "center",
     fontWeight: "700",
-    marginTop: height * 0.05,
+    marginTop: height * 0.02,
     paddingHorizontal: width * 0.1,
-  },
-  separatorContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    margin: width * 0.05,
-  },
-  socialContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    width: width,
   },
 });
 

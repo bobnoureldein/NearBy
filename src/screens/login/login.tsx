@@ -11,6 +11,7 @@ import {
   backgroundColorRGBAOpacity,
 } from "../../constants/constants";
 import TextInput from "../../components/TextInput/textInput";
+import SocialButton from "../../components/SocialButton/socialButton";
 
 const backgroundImage = require("../../images/villa.png");
 
@@ -43,12 +44,35 @@ const Login = ({ navigation }: Props) => {
           <View style={styles.subContainer}>
             <MainButton
               text="Log In"
-              onPress={() => navigation.navigate("GetStart")}
+              onPress={() => navigation.navigate("VerifyCode")}
             />
           </View>
           <TouchableOpacity>
             <Text style={styles.secondaryText}>Log In As A Visitor</Text>
           </TouchableOpacity>
+          <View style={styles.separatorContainer}>
+            <View style={{ flex: 1, height: 1, backgroundColor: "black" }} />
+            <View>
+              <Text style={{ width: 120, textAlign: "center", fontSize: 14 }}>
+                or continue with
+              </Text>
+            </View>
+            <View style={{ flex: 1, height: 1, backgroundColor: "black" }} />
+          </View>
+          <View style={styles.socialContainer}>
+            <SocialButton
+              imageSource={require("../../images/apple.png")}
+              onPress={() => console.log("first")}
+            />
+            <SocialButton
+              imageSource={require("../../images/google.png")}
+              onPress={() => console.log("first")}
+            />
+            <SocialButton
+              imageSource={require("../../images/facebook.png")}
+              onPress={() => console.log("first")}
+            />
+          </View>
         </View>
       </LinearGradient>
     </ImageBackground>
