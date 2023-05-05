@@ -23,7 +23,7 @@ type Props = {
   navigation: VerifyCodeScreenNavigationProp;
 };
 
-const Login = ({ navigation }: Props) => {
+const Verify = ({ navigation }: Props) => {
   return (
     <ImageBackground source={backgroundImage} style={styles.background}>
       <LinearGradient
@@ -45,7 +45,7 @@ const Login = ({ navigation }: Props) => {
             <CodeFieldComponent />
             <MainButton
               text="Verify"
-              onPress={() => navigation.navigate("GetStart")}
+              onPress={() => navigation.navigate("CompleteCode")}
             />
           </View>
           <TouchableOpacity>
@@ -57,4 +57,4 @@ const Login = ({ navigation }: Props) => {
   );
 };
 
-export default Login;
+export default Verify;
