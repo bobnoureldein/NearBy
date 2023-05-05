@@ -15,10 +15,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: height * 0.05,
   },
-  subContainer: {
-    alignItems: "center",
-    marginTop: 24,
-  },
   logo: {
     marginTop: height * 0.1,
   },

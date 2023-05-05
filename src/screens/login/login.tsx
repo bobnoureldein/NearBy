@@ -42,12 +42,10 @@ const Login = ({ navigation }: Props) => {
           <Logo style={styles.logo} />
           <Text style={styles.text}>Login to your account</Text>
           <TextInput icon={<PhoneIcon />} />
-          <View style={styles.subContainer}>
-            <MainButton
-              text="Log In"
-              onPress={() => navigation.navigate("VerifyCode")}
-            />
-          </View>
+          <MainButton
+            text="Log In"
+            onPress={() => navigation.navigate("VerifyCode")}
+          />
           <TouchableOpacity>
             <Text style={styles.secondaryText}>Log In As A Visitor</Text>
           </TouchableOpacity>
