@@ -8,6 +8,8 @@ import Next2 from "../screens/next2/next";
 import Next3 from "../screens/next3/next";
 import Login from "../screens/login/login";
 import VerifyCode from "../screens/verifyCode/verifyCode";
+import CompleteCode from "../screens/complete/complete";
+import Camera from "../screens/camera/camera";
 
 export type RootStackParamList = {
   GetStart: undefined;
@@ -16,6 +18,8 @@ export type RootStackParamList = {
   Next3: undefined;
   Login: undefined;
   VerifyCode: undefined;
+  CompleteCode: undefined;
+  Camera: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -39,6 +43,8 @@ function App() {
         <Stack.Screen name="Next3" component={Next3} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="VerifyCode" component={VerifyCode} />
+        <Stack.Screen name="CompleteCode" component={CompleteCode} />
+        <Stack.Screen name="Camera" component={Camera} />
       </Stack.Navigator>
     </NavigationContainer>
   );
