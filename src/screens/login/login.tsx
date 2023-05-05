@@ -12,6 +12,7 @@ import {
 } from "../../constants/constants";
 import TextInput from "../../components/TextInput/textInput";
 import SocialButton from "../../components/SocialButton/socialButton";
+import PhoneIcon from "../../images/phone";
 
 const backgroundImage = require("../../images/villa.png");
 
@@ -40,7 +41,7 @@ const Login = ({ navigation }: Props) => {
         <View style={styles.main}>
           <Logo style={styles.logo} />
           <Text style={styles.text}>Login to your account</Text>
-          <TextInput />
+          <TextInput icon={<PhoneIcon />} />
           <View style={styles.subContainer}>
             <MainButton
               text="Log In"
