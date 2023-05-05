@@ -53,6 +53,7 @@ const RoundedButton: React.FC<RoundedButtonProps> = ({
 
 const styles = StyleSheet.create({
   shadow: {
+    marginTop: 12,
     shadowColor: "grey",
     elevation: 4,
     shadowOffset: {
