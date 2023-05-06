@@ -8,10 +8,13 @@ import {
   secondaryColor,
 } from "../../constants/constants";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../navigation/navigation";
+import { BeforeLoginStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
 
-type NextScreenNavigationProp = StackNavigationProp<RootStackParamList, "Next">;
+type NextScreenNavigationProp = StackNavigationProp<
+  BeforeLoginStackParamList,
+  "Next"
+>;
 
 type Props = {
   navigation: NextScreenNavigationProp;

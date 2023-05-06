@@ -5,7 +5,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import RoundedButton from "../../components/RoundedButton/roundButton";
 import Logo from "../../images/logo.jsx";
 import styles from "./styles";
-import { RootStackParamList } from "../../navigation/navigation";
+import { BeforeLoginStackParamList } from "../../navigation/navigation";
 import {
   backgroundColorRGBA,
   backgroundColorRGBAOpacity,
@@ -14,7 +14,7 @@ import {
 const backgroundImage = require("../../images/unsplash.png");
 
 type GetStartScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
+  BeforeLoginStackParamList,
   "GetStart"
 >;
 

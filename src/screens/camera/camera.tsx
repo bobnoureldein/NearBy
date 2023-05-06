@@ -1,9 +1,9 @@
 import Camera from "../../components/Camera/Camera";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../navigation/navigation";
+import { AfterLoginStackParamList } from "../../navigation/navigation";
 
 type CameraScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
+  AfterLoginStackParamList,
   "Camera"
 >;
 

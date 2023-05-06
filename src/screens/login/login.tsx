@@ -5,7 +5,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import MainButton from "../../components/MainButton/mainButton";
 import Logo from "../../images/logo.jsx";
 import styles from "./styles";
-import { RootStackParamList } from "../../navigation/navigation";
+import { BeforeLoginStackParamList } from "../../navigation/navigation";
 import {
   backgroundColorRGBA,
   backgroundColorRGBAOpacity,
@@ -17,7 +17,7 @@ import PhoneIcon from "../../images/phone";
 const backgroundImage = require("../../images/villa.png");
 
 type LoginScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
+  BeforeLoginStackParamList,
   "Login"
 >;
 
