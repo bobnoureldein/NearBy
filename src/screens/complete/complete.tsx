@@ -6,7 +6,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import MainButton from "../../components/MainButton/mainButton";
 import styles from "./styles";
-import { RootStackParamList } from "../../navigation/navigation";
+import { AfterLoginStackParamList } from "../../navigation/navigation";
 import {
   backgroundColorRGBA,
   backgroundColorRGBAOpacity,
@@ -21,7 +21,7 @@ import CircleImage from "../../components/CircleImage/CircleImage";
 const backgroundImage = require("../../images/villa.png");
 
 type CompleteCodeScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
+  AfterLoginStackParamList,
   "CompleteCode"
 >;
 
@@ -96,10 +96,7 @@ const NormalAccount = ({ navigation }: Props) => {
         inputMode="email"
         maxLength={77}
       />
-      <MainButton
-        text="Confirm"
-        onPress={() => navigation.navigate("GetStart")}
-      />
+      <MainButton text="Confirm" onPress={() => navigation.navigate("Home")} />
     </View>
   );
 };
@@ -149,10 +146,7 @@ const BusinessAccount = ({ navigation }: Props) => {
         inputMode="numeric"
         maxLength={77}
       />
-      <MainButton
-        text="Confirm"
-        onPress={() => navigation.navigate("GetStart")}
-      />
+      <MainButton text="Confirm" onPress={() => navigation.navigate("Home")} />
     </View>
   );
 };
