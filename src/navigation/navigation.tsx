@@ -12,6 +12,8 @@ import VerifyCode from "../screens/verifyCode/verifyCode";
 import CompleteCode from "../screens/complete/complete";
 import Camera from "../screens/camera/camera";
 import Home from "../screens/home/home";
+import NearMe from "../screens/nearMe/nearMe";
+
 import ArrowLeft from "../images/arrow-left";
 
 export type BeforeLoginStackParamList = {
@@ -27,6 +29,7 @@ export type AfterLoginStackParamList = {
   CompleteCode: undefined;
   Camera: undefined;
   Home: undefined;
+  NearMe: undefined;
 };
 
 export type CustomHeaderStackParamList = {
@@ -123,12 +126,25 @@ const AfterLoginNavigator = () => {
           // headerTintColor: "#2D3F5F",
         }}
       />
+      <AfterLoginStack.Screen
+        name="NearMe"
+        component={NearMe}
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerLeft: (props) => <BackIcon {...props} />, // Hide default back button
+          headerTitle: "Near me",
+          // headerStyle: { backgroundColor: "#F9FAFC" },
+          // headerTitleStyle: { color: "#2D3F5F" },
+          // headerTintColor: "#2D3F5F",
+        }}
+      />
     </AfterLoginStack.Navigator>
   );
 };
 
 function App() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
   return (
     <NavigationContainer>
       {isUserLoggedIn ? <AfterLoginNavigator /> : <BeforeLoginNavigator />}
