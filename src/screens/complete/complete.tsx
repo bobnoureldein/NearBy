@@ -3,7 +3,6 @@ import { View, Text, ImageBackground } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-
 import MainButton from "../../components/MainButton/mainButton";
 import styles from "./styles";
 import { AfterLoginStackParamList } from "../../navigation/navigation";
