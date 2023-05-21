@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { ReactNode } from "react";
 import Icon from "react-native-vector-icons/AntDesign";
-import { width } from "../../constants/constants";
+import { mainColor, width } from "../../constants/constants";
 
 interface RoundedButtonProps {
   text: string;
@@ -24,50 +24,38 @@ const RoundedButton: React.FC<RoundedButtonProps> = ({
   onPress,
   buttonStyle,
 }) => {
-  const [buttonColor, setButtonColor] = useState("#EF8224");
-
-  const ArrowRight = <Icon name="arrowright" size={30} color={buttonColor} />;
+  const [buttonColor, setButtonColor] = useState(mainColor);
 
   const handleButtonPressIn = () => {
     setButtonColor("#FDC90D");
   };
 
   const handleButtonPressOut = () => {
-    setButtonColor("#EF8224");
+    setButtonColor(mainColor);
   };
 
   return (
-    <View style={styles.shadow}>
-      <TouchableOpacity
-        onPress={onPress}
-        onPressIn={handleButtonPressIn}
-        onPressOut={handleButtonPressOut}
-        activeOpacity={1}
+    <TouchableOpacity
+      onPress={onPress}
+      onPressIn={handleButtonPressIn}
+      onPressOut={handleButtonPressOut}
+      activeOpacity={0.8}
+    >
+      <View
+        style={[styles.button, { backgroundColor: buttonColor }, buttonStyle]}
       >
-        <View
-          style={[styles.button, { backgroundColor: buttonColor }, buttonStyle]}
-        >
-          {icon && (
-            <View style={[styles.icon, styles.shadow]}>{ArrowRight}</View>
-          )}
-          <Text style={styles.text}>{text}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+        {icon && (
+          <View style={styles.icon}>
+            <Icon name="arrowright" size={30} color={buttonColor} />
+          </View>
+        )}
+        <Text style={styles.text}>{text}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: "grey",
-    elevation: 4,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-  },
   button: {
     borderRadius: 26,
     height: 52,
@@ -77,11 +65,18 @@ const styles = StyleSheet.create({
     minWidth: 160,
     width: width * 0.4,
     flexDirection: "row",
+    shadowColor: "grey",
+    elevation: 4,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
   text: {
     color: "#fff",
     fontSize: 20,
-
     textAlign: "center",
     flex: 1,
   },
@@ -93,6 +88,14 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     alignItems: "center",
     justifyContent: "center",
+    shadowColor: "grey",
+    elevation: 4,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
 });
 
