@@ -4,8 +4,10 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { AfterLoginStackParamList } from "../../navigation/navigation";
 import MainButton from "../../components/MainButton/mainButton";
+import ImageButton from "../../components/ImageButton/imageButton";
 import styles from "./styles";
-import { useSafeArea } from "react-native-safe-area-view";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ScrollView } from "react-native-gesture-handler";
 
 type NearMeScreenNavigationProp = StackNavigationProp<
   AfterLoginStackParamList,
@@ -18,24 +20,101 @@ type Props = {
 
 const Tab = createMaterialTopTabNavigator();
 
+const data = [
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+];
+
 const People = ({ navigation }: Props) => {
-  return <View></View>;
+  const rows = [];
+  const buttonsPerRow = 3;
+
+  for (let i = 0; i < data.length; i += buttonsPerRow) {
+    const rowButtons = data.slice(i, i + buttonsPerRow);
+    const row = (
+      <View key={i} style={styles.listContainer}>
+        {rowButtons.map((item, index) => (
+          <ImageButton
+            key={index}
+            label={item.label}
+            imageSource={item.image}
+          />
+        ))}
+      </View>
+    );
+    rows.push(row);
+  }
+
+  return (
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={styles.rowContainer}
+    >
+      {rows}
+    </ScrollView>
+  );
 };
 
 const Places = ({ navigation }: Props) => {
-  return <View></View>;
+  const rows = [];
+  const buttonsPerRow = 3;
+
+  for (let i = 0; i < data.length; i += buttonsPerRow) {
+    const rowButtons = data.slice(i, i + buttonsPerRow);
+    const row = (
+      <View key={i} style={styles.listContainer}>
+        {rowButtons.map((item, index) => (
+          <ImageButton
+            key={index}
+            label={item.label}
+            imageSource={item.image}
+          />
+        ))}
+      </View>
+    );
+    rows.push(row);
+  }
+
+  return (
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={styles.rowContainer}
+    >
+      {rows}
+    </ScrollView>
+  );
 };
 
 const NearMe = ({ navigation }: Props) => {
-  const safeArea = useSafeArea();
+  const insets = useSafeAreaInsets();
 
   return (
     <View style={styles.container}>
-      <View style={[styles.topTab, { paddingTop: safeArea.top + 48 }]}>
+      <View style={[styles.topTab, { paddingTop: insets.top + 48 }]}>
         <Tab.Navigator
           screenOptions={{
-            tabBarActiveTintColor: "blue", // Color of the active tab
-            tabBarInactiveTintColor: "gray", // Color of the inactive tabs
             tabBarLabelStyle: styles.label, // Style for the tab label
             tabBarStyle: styles.tabBar, // Style for the tab bar
             tabBarIndicatorStyle: styles.indicator, // Style for the tab indicator
@@ -46,10 +125,7 @@ const NearMe = ({ navigation }: Props) => {
         </Tab.Navigator>
       </View>
       <View style={styles.buttonContainer}>
-        <MainButton
-          text="Use This Address"
-          onPress={() => navigation.navigate("NearMe")}
-        />
+        <MainButton text="Search" onPress={() => navigation.navigate("Home")} />
       </View>
     </View>
   );
