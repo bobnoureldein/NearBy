@@ -95,7 +95,10 @@ const NormalAccount = ({ navigation }: Props) => {
         inputMode="email"
         maxLength={77}
       />
-      <MainButton text="Confirm" onPress={() => navigation.navigate("Home")} />
+      <MainButton
+        text="Confirm"
+        onPress={() => navigation.navigate("MapScreen")}
+      />
     </View>
   );
 };
@@ -145,7 +148,10 @@ const BusinessAccount = ({ navigation }: Props) => {
         inputMode="numeric"
         maxLength={77}
       />
-      <MainButton text="Confirm" onPress={() => navigation.navigate("Home")} />
+      <MainButton
+        text="Confirm"
+        onPress={() => navigation.navigate("MapScreen")}
+      />
     </View>
   );
 };
