@@ -19,12 +19,7 @@ const Home = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
       <Map />
-      <View style={styles.buttonContainer}>
-        <MainButton
-          text="Use This Address"
-          onPress={() => navigation.navigate("NearMe")}
-        />
-      </View>
+      <View style={styles.buttonContainer}></View>
     </View>
   );
 };
