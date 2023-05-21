@@ -11,9 +11,9 @@ import Login from "../screens/login/login";
 import VerifyCode from "../screens/verifyCode/verifyCode";
 import CompleteCode from "../screens/complete/complete";
 import Camera from "../screens/camera/camera";
-import Home from "../screens/home/home";
+import MapScreen from "../screens/map/map";
 import NearMe from "../screens/nearMe/nearMe";
-
+import Home from "../screens/home/home";
 import ArrowLeft from "../images/arrow-left";
 
 export type BeforeLoginStackParamList = {
@@ -30,6 +30,7 @@ export type AfterLoginStackParamList = {
   Camera: undefined;
   Home: undefined;
   NearMe: undefined;
+  MapScreen: undefined;
 };
 
 export type CustomHeaderStackParamList = {
@@ -114,8 +115,8 @@ const AfterLoginNavigator = () => {
         component={Camera}
       />
       <AfterLoginStack.Screen
-        name="Home"
-        component={Home}
+        name="MapScreen"
+        component={MapScreen}
         options={{
           headerShown: true,
           headerTransparent: true,
@@ -137,6 +138,13 @@ const AfterLoginNavigator = () => {
           // headerStyle: { backgroundColor: "#F9FAFC" },
           // headerTitleStyle: { color: "#2D3F5F" },
           // headerTintColor: "#2D3F5F",
+        }}
+      />
+      <AfterLoginStack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
         }}
       />
     </AfterLoginStack.Navigator>
