@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Text, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { TransitionSpecs, TransitionPresets } from "@react-navigation/stack";
+import {
+  TransitionSpecs,
+  TransitionPresets,
+  createStackNavigator,
+} from "@react-navigation/stack";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import GetStart from "../screens/getStart/getStart";
 import Next from "../screens/next/next";
 import Next2 from "../screens/next2/next";
@@ -34,12 +38,18 @@ export type AfterLoginStackParamList = {
 };
 
 export type CustomHeaderStackParamList = {
-  Home: undefined;
   Next: undefined;
+};
+
+export type BottomTabStackParamList = {
+  Home: undefined;
 };
 
 const BeforeLoginStack = createStackNavigator<BeforeLoginStackParamList>();
 const AfterLoginStack = createStackNavigator<AfterLoginStackParamList>();
+
+const BottomTabStack =
+  createMaterialBottomTabNavigator<BottomTabStackParamList>();
 
 const BeforeLoginNavigator = () => {
   return (
@@ -122,9 +132,6 @@ const AfterLoginNavigator = () => {
           headerTransparent: true,
           headerLeft: (props) => <BackIcon {...props} />, // Hide default back button
           headerTitle: "Select Location",
-          // headerStyle: { backgroundColor: "#F9FAFC" },
-          // headerTitleStyle: { color: "#2D3F5F" },
-          // headerTintColor: "#2D3F5F",
         }}
       />
       <AfterLoginStack.Screen
@@ -135,9 +142,6 @@ const AfterLoginNavigator = () => {
           headerTransparent: true,
           headerLeft: (props) => <BackIcon {...props} />, // Hide default back button
           headerTitle: "Near me",
-          // headerStyle: { backgroundColor: "#F9FAFC" },
-          // headerTitleStyle: { color: "#2D3F5F" },
-          // headerTintColor: "#2D3F5F",
         }}
       />
       <AfterLoginStack.Screen
@@ -151,8 +155,16 @@ const AfterLoginNavigator = () => {
   );
 };
 
+const UserStack = () => {
+  return (
+    <BottomTabStack.Navigator>
+      <BottomTabStack.Screen name="Home" component={Home} />
+    </BottomTabStack.Navigator>
+  );
+};
+
 function App() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   return (
     <NavigationContainer>
       {isUserLoggedIn ? <AfterLoginNavigator /> : <BeforeLoginNavigator />}
