@@ -2,12 +2,12 @@ import React from "react";
 import { View } from "react-native";
 import Map from "../../components/Map/map";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { AfterLoginStackParamList } from "../../navigation/navigation";
-import MainButton from "../../components/MainButton/mainButton";
+import { BottomTabStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type HomeScreenNavigationProp = StackNavigationProp<
-  AfterLoginStackParamList,
+  BottomTabStackParamList,
   "Home"
 >;
 
@@ -16,14 +16,15 @@ type Props = {
 };
 
 const Home = ({ navigation }: Props) => {
+  const insets = useSafeAreaInsets();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top + 48 }]}>
       <Map />
       <View style={styles.buttonContainer}>
-        <MainButton
+        {/* <MainButton
           text="Use This Address"
           onPress={() => navigation.navigate("NearMe")}
-        />
+        /> */}
       </View>
     </View>
   );
