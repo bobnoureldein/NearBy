@@ -11,9 +11,6 @@ const styles = StyleSheet.create({
     marginBottom: 54,
     marginTop: 16,
   },
-  topTab: {
-    flex: 1,
-  },
   label: {
     fontSize: 16,
     textTransform: "capitalize",
