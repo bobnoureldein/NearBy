@@ -111,21 +111,22 @@ const NearMe = ({ navigation }: Props) => {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.topTab, { paddingTop: insets.top + 48 }]}>
-        <Tab.Navigator
-          screenOptions={{
-            tabBarLabelStyle: styles.label, // Style for the tab label
-            tabBarStyle: styles.tabBar, // Style for the tab bar
-            tabBarIndicatorStyle: styles.indicator, // Style for the tab indicator
-          }}
-        >
-          <Tab.Screen name="People" component={People} />
-          <Tab.Screen name="Places" component={Places} />
-        </Tab.Navigator>
-      </View>
+    <View style={[styles.container, { paddingTop: insets.top + 48 }]}>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarLabelStyle: styles.label, // Style for the tab label
+          tabBarStyle: styles.tabBar, // Style for the tab bar
+          tabBarIndicatorStyle: styles.indicator, // Style for the tab indicator
+        }}
+      >
+        <Tab.Screen name="People" component={People} />
+        <Tab.Screen name="Places" component={Places} />
+      </Tab.Navigator>
       <View style={styles.buttonContainer}>
-        <MainButton text="Search" onPress={() => navigation.navigate("Home")} />
+        <MainButton
+          text="Search"
+          onPress={() => navigation.navigate("UserStack")}
+        />
       </View>
     </View>
   );
