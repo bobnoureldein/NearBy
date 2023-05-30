@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Text, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   TransitionSpecs,
   TransitionPresets,
   createStackNavigator,
 } from "@react-navigation/stack";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import GetStart from "../screens/getStart/getStart";
 import Next from "../screens/next/next";
 import Next2 from "../screens/next2/next";
@@ -18,7 +19,12 @@ import Camera from "../screens/camera/camera";
 import MapScreen from "../screens/map/map";
 import NearMe from "../screens/nearMe/nearMe";
 import Home from "../screens/home/home";
+import Profile from "../screens/profile/profile";
+import Saved from "../screens/saved/saved";
+import More from "../screens/more/more";
 import ArrowLeft from "../images/arrow-left";
+import Icon from "react-native-vector-icons/Feather";
+import { width } from "../constants/constants";
 
 export type BeforeLoginStackParamList = {
   GetStart: undefined;
@@ -32,24 +38,27 @@ export type BeforeLoginStackParamList = {
 export type AfterLoginStackParamList = {
   CompleteCode: undefined;
   Camera: undefined;
-  Home: undefined;
   NearMe: undefined;
   MapScreen: undefined;
-};
-
-export type CustomHeaderStackParamList = {
-  Next: undefined;
+  UserStack: undefined;
+  Home: undefined;
 };
 
 export type BottomTabStackParamList = {
-  Home: undefined;
+  Home: UserStackParams;
+  Profile: UserStackParams;
+  Saved: UserStackParams;
+  More: UserStackParams;
+};
+
+export type UserStackParams = {
+  screen: string;
 };
 
 const BeforeLoginStack = createStackNavigator<BeforeLoginStackParamList>();
 const AfterLoginStack = createStackNavigator<AfterLoginStackParamList>();
 
-const BottomTabStack =
-  createMaterialBottomTabNavigator<BottomTabStackParamList>();
+const BottomTabStack = createBottomTabNavigator<BottomTabStackParamList>();
 
 const BeforeLoginNavigator = () => {
   return (
@@ -64,14 +73,7 @@ const BeforeLoginNavigator = () => {
       }}
     >
       <BeforeLoginStack.Screen name="GetStart" component={GetStart} />
-      <BeforeLoginStack.Screen
-        // options={{
-        //   headerShown: true,
-        //   headerTransparent: true,
-        // }}
-        name="Next"
-        component={Next}
-      />
+      <BeforeLoginStack.Screen name="Next" component={Next} />
       <BeforeLoginStack.Screen
         name="Next2"
         component={Next2}
@@ -81,9 +83,6 @@ const BeforeLoginNavigator = () => {
           headerRight: (props) => <SkipButton {...props} />, // Hide default back button
           headerTitle: () => null,
           headerLeft: () => null,
-          // headerStyle: { backgroundColor: "#F9FAFC" },
-          // headerTitleStyle: { color: "#2D3F5F" },
-          // headerTintColor: "#2D3F5F",
         }}
       />
       <BeforeLoginStack.Screen name="Next3" component={Next3} />
@@ -145,8 +144,8 @@ const AfterLoginNavigator = () => {
         }}
       />
       <AfterLoginStack.Screen
-        name="Home"
-        component={Home}
+        name="UserStack"
+        component={UserStack}
         options={{
           headerShown: false,
         }}
@@ -157,14 +156,98 @@ const AfterLoginNavigator = () => {
 
 const UserStack = () => {
   return (
-    <BottomTabStack.Navigator>
+    <BottomTabStack.Navigator tabBar={(props) => <MyTabBar {...props} />}>
       <BottomTabStack.Screen name="Home" component={Home} />
+      <BottomTabStack.Screen name="Profile" component={Profile} />
+      <BottomTabStack.Screen name="Saved" component={Saved} />
+      <BottomTabStack.Screen name="More" component={More} />
     </BottomTabStack.Navigator>
   );
 };
 
+function MyTabBar({ state, descriptors, navigation }) {
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        paddingHorizontal: 5,
+
+        marginHorizontal: 26,
+        marginBottom: 34,
+        borderRadius: 12,
+        backgroundColor: "#fff",
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+      }}
+    >
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
+
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: "tabPress",
+            target: route.key,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: "tabLongPress",
+            target: route.key,
+          });
+        };
+
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={{
+              paddingVertical: 20,
+              flex: isFocused ? 4 : 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-around",
+              paddingHorizontal: 20,
+              // backgroundColor: isFocused ? "red" : "#fff",
+            }}
+          >
+            <Icon name="home" size={20} />
+            {isFocused && (
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                {label}
+              </Text>
+            )}
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+}
+
 function App() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
+  const [isUserLoggedIn, setUser] = useState(true);
   return (
     <NavigationContainer>
       {isUserLoggedIn ? <AfterLoginNavigator /> : <BeforeLoginNavigator />}
