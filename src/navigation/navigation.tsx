@@ -22,6 +22,7 @@ import Home from "../screens/home/home";
 import Profile from "../screens/profile/profile";
 import Saved from "../screens/saved/saved";
 import More from "../screens/more/more";
+import PrivacyPolicy from "../screens/privacyPolicy/privacyPolicy";
 import ArrowLeft from "../images/arrow-left";
 import Icon from "react-native-vector-icons/Feather";
 import { mainColor, width } from "../constants/constants";
@@ -42,6 +43,7 @@ export type AfterLoginStackParamList = {
   MapScreen: undefined;
   UserStack: undefined;
   Home: undefined;
+  PrivacyPolicy: undefined;
 };
 
 export type BottomTabStackParamList = {
@@ -152,6 +154,13 @@ const AfterLoginNavigator = () => {
         component={UserStack}
         options={{
           headerShown: false,
+        }}
+      />
+      <AfterLoginStack.Screen
+        name="PrivacyPolicy"
+        component={PrivacyPolicy}
+        options={{
+          headerShown: true,
         }}
       />
     </AfterLoginStack.Navigator>
