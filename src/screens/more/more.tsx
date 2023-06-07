@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { BottomTabStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
@@ -17,7 +17,11 @@ type Props = {
 const More = ({ navigation }: Props) => {
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.container, { paddingTop: insets.top + 48 }]}></View>
+    <View style={[styles.container, { paddingTop: insets.top + 48 }]}>
+      <TouchableOpacity>
+        <Text>Privacy Policy</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
