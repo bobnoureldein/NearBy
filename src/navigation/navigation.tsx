@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   TransitionSpecs,
@@ -24,7 +24,7 @@ import Saved from "../screens/saved/saved";
 import More from "../screens/more/more";
 import ArrowLeft from "../images/arrow-left";
 import Icon from "react-native-vector-icons/Feather";
-import { width } from "../constants/constants";
+import { mainColor, width } from "../constants/constants";
 
 export type BeforeLoginStackParamList = {
   GetStart: undefined;
@@ -167,82 +167,101 @@ const UserStack = () => {
 
 function MyTabBar({ state, descriptors, navigation }) {
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        paddingHorizontal: 5,
+    <>
+      <TouchableOpacity
+        style={{
+          backgroundColor: mainColor,
+          position: "absolute",
+          bottom: 114,
+          alignSelf: "center",
+          height: 40,
+          width: 40,
+          borderRadius: 20,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Image
+          source={require("../images/Chat-icon.png")}
+          style={{ height: 24, width: 24 }}
+        />
+      </TouchableOpacity>
 
-        marginHorizontal: 26,
-        marginBottom: 34,
-        borderRadius: 12,
-        backgroundColor: "#fff",
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-      }}
-    >
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+      <View
+        style={{
+          flexDirection: "row",
+          paddingHorizontal: 5,
 
-        const isFocused = state.index === index;
+          marginHorizontal: 26,
+          marginBottom: 34,
+          borderRadius: 12,
+          backgroundColor: "#fff",
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+        }}
+      >
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          const label =
+            options.tabBarLabel !== undefined
+              ? options.tabBarLabel
+              : options.title !== undefined
+              ? options.title
+              : route.name;
 
-        const onPress = () => {
-          const event = navigation.emit({
-            type: "tabPress",
-            target: route.key,
-          });
+          const isFocused = state.index === index;
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
+          const onPress = () => {
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+            });
 
-        const onLongPress = () => {
-          navigation.emit({
-            type: "tabLongPress",
-            target: route.key,
-          });
-        };
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
 
-        return (
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{
-              paddingVertical: 20,
-              flex: isFocused ? 4 : 1,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-around",
-              paddingHorizontal: 20,
-              // backgroundColor: isFocused ? "red" : "#fff",
-            }}
-          >
-            <Icon name="home" size={20} />
-            {isFocused && (
-              <Text
-                style={{
-                  fontWeight: "bold",
-                }}
-              >
-                {label}
-              </Text>
-            )}
-          </TouchableOpacity>
-        );
-      })}
-    </View>
+          const onLongPress = () => {
+            navigation.emit({
+              type: "tabLongPress",
+              target: route.key,
+            });
+          };
+
+          return (
+            <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityState={isFocused ? { selected: true } : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarTestID}
+              onPress={onPress}
+              onLongPress={onLongPress}
+              style={{
+                padding: 20,
+                flex: isFocused ? 4 : 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around",
+              }}
+            >
+              <Icon name="home" size={20} />
+              {isFocused && (
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                  }}
+                >
+                  {label}
+                </Text>
+              )}
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </>
   );
 }
 
