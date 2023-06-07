@@ -93,7 +93,11 @@ const BeforeLoginNavigator = () => {
 };
 
 function SkipButton({ ...props }) {
-  return <Text {...props}>Skip</Text>;
+  return (
+    <Text {...props} style={{ marginRight: 20 }}>
+      Skip
+    </Text>
+  );
 }
 
 function BackIcon({ ...props }) {
@@ -156,7 +160,33 @@ const AfterLoginNavigator = () => {
 
 const UserStack = () => {
   return (
-    <BottomTabStack.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+    <BottomTabStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "transparent",
+        },
+        headerTransparent: true,
+        headerRight: (props) => (
+          <TouchableOpacity style={{ marginRight: 20, flexDirection: "row" }}>
+            <Image
+              source={require("../images/notification.png")}
+              style={{ height: 24, width: 24 }}
+            />
+          </TouchableOpacity>
+        ), // Hide default back button
+        headerTitle: () => null,
+        headerLeft: () => (
+          <View style={{ marginLeft: 20, flexDirection: "row" }}>
+            <Text>Hello, user</Text>
+            <Image
+              source={require("../images/wave.png")}
+              style={{ height: 18, width: 18, marginLeft: 6 }}
+            />
+          </View>
+        ),
+      }}
+      tabBar={(props) => <MyTabBar {...props} />}
+    >
       <BottomTabStack.Screen name="Home" component={Home} />
       <BottomTabStack.Screen name="Profile" component={Profile} />
       <BottomTabStack.Screen name="Saved" component={Saved} />
@@ -172,7 +202,7 @@ function MyTabBar({ state, descriptors, navigation }) {
         style={{
           backgroundColor: mainColor,
           position: "absolute",
-          bottom: 114,
+          bottom: 102,
           alignSelf: "center",
           height: 40,
           width: 40,
