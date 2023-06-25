@@ -5,17 +5,19 @@ import {
   Text,
   StyleSheet,
   ImageSourcePropType,
+  ViewStyle,
 } from "react-native";
 import { width } from "../../constants/constants";
 
 interface ButtonProps {
   label: string;
   imageSource: ImageSourcePropType;
+  containerStyle?: ViewStyle;
 }
 
-const Button: FC<ButtonProps> = ({ label, imageSource }) => {
+const Button: FC<ButtonProps> = ({ label, imageSource, containerStyle }) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={[styles.button, containerStyle]}>
       <Image source={imageSource} style={styles.image} />
       <Text style={styles.label}>{label}</Text>
     </TouchableOpacity>
