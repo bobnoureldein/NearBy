@@ -6,11 +6,11 @@ import {
   TextInputProps,
   TextStyle,
   ViewStyle,
-  GestureResponderEvent,
 } from "react-native";
 import { width } from "../../constants/constants";
 
 interface InputProps extends TextInputProps {
+  containerStyle?: ViewStyle;
   style?: ViewStyle;
   textStyle?: TextStyle | TextStyle[];
   icon: JSX.Element;
@@ -27,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   keyboardType,
   autoCapitalize,
   autoCorrect,
+  containerStyle,
   style,
   icon,
   svgIcon,
@@ -67,6 +68,7 @@ const Input: React.FC<InputProps> = ({
         styles.textInputSection,
         BorderColor && styles.textInputBorder,
         { borderColor: InputColor },
+        containerStyle,
       ]}
       onTouchStart={handlePress}
     >
