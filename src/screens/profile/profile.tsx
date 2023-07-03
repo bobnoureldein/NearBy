@@ -3,9 +3,22 @@ import { View, Text, Image, ImageBackground, ScrollView } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { BottomTabStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import MainButton from "../../components/MainButton/mainButton";
 
 const backgroundImage = require("../../images/villa.png");
+
+const data = [
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+  { id: 1, label: "Restaurants", image: require("../../images/google.png") },
+  { id: 2, label: "Cafes", image: require("../../images/google.png") },
+  { id: 3, label: "Pharmacy", image: require("../../images/google.png") },
+];
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   BottomTabStackParamList,
@@ -17,7 +30,23 @@ type Props = {
 };
 
 const Profile = ({ navigation }: Props) => {
-  const insets = useSafeAreaInsets();
+  const rows = [];
+  const buttonsPerRow = 3;
+
+  for (let i = 0; i < data.length; i += buttonsPerRow) {
+    const rowButtons = data.slice(i, i + buttonsPerRow);
+    const row = (
+      <View key={i} style={styles.listContainer}>
+        {rowButtons.map((item, index) => (
+          <View key={index} style={styles.userImagesContainer}>
+            <Image source={item.image} style={styles.userImages} />
+          </View>
+        ))}
+      </View>
+    );
+    rows.push(row);
+  }
+
   return (
     <ScrollView style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.background}>
@@ -42,8 +71,44 @@ const Profile = ({ navigation }: Props) => {
             unknown Dining chair, waiting chair or home brushes as a garden
             corner home view more dummy text ever since the 1500s,
           </Text>
+          <View>
+            <View style={styles.subGallery}>
+              <Image
+                source={require("../../images/loc.png")}
+                style={styles.addImage}
+              />
+              <Text style={[styles.description, styles.marginHorizontal]}>
+                Mansoura,Tourel,Tira St
+              </Text>
+            </View>
+            <View style={styles.subGallery}>
+              <View style={styles.addImage} />
+              <Text style={[styles.description, styles.marginHorizontal]}>
+                Mansoura,Tourel,Tira St
+              </Text>
+            </View>
+            <MainButton text="Confirm" />
+          </View>
         </View>
       </ImageBackground>
+      <View style={styles.galleryHeader}>
+        <View style={styles.subGallery}>
+          <Image
+            source={require("../../images/add.png")}
+            style={styles.addImage}
+          />
+          <Text style={styles.galleryText}>Gallery</Text>
+          <View style={styles.divider} />
+        </View>
+        <TouchableOpacity style={styles.add}>
+          <Image
+            source={require("../../images/add.png")}
+            style={styles.addImage}
+          />
+        </TouchableOpacity>
+      </View>
+      {rows}
+      <View style={{ height: 112 }} />
     </ScrollView>
   );
 };
