@@ -174,7 +174,7 @@ const UserStack = () => {
         headerStyle: {
           backgroundColor: "transparent",
         },
-        headerTransparent: true,
+        headerTransparent: false,
         headerRight: (props) => (
           <TouchableOpacity style={{ marginRight: 20, flexDirection: "row" }}>
             <Image
