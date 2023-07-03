@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginHorizontal: 20,
     position: "absolute",
-    top: 90,
   },
   containerStyle: {
     width: width - 110,
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     position: "absolute",
-    top: 174,
+    top: 90,
     flexDirection: "row",
     paddingHorizontal: 20,
   },
