@@ -27,7 +27,7 @@ const PrivacyPolicy = ({ navigation }: Props) => {
   }, []);
 
   return (
-    <View style={[styles.container]}>
+    <View style={styles.container}>
       <Text style={styles.mainText}>Who are we?</Text>
       <Text
         style={styles.subText}
