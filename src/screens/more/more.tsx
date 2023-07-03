@@ -17,7 +17,7 @@ type Props = {
 const More = ({ navigation }: Props) => {
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.container, { paddingTop: insets.top + 48 }]}>
+    <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("PrivacyPolicy")}
