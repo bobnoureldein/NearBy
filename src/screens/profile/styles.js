@@ -53,10 +53,71 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: "#fff",
     paddingHorizontal: 20,
-    paddingTop: 16,
+    paddingVertical: 16,
+    justifyContent: "space-between",
   },
   description: {
     fontSize: 15,
+  },
+  marginHorizontal: {
+    marginHorizontal: 12,
+  },
+  galleryHeader: {
+    width: width * 0.9,
+    flexDirection: "row",
+    alignSelf: "center",
+    marginVertical: 20,
+    justifyContent: "space-between",
+  },
+  subGallery: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  galleryText: {
+    fontSize: 15,
+    fontWeight: "700",
+    marginHorizontal: 12,
+  },
+  divider: {
+    borderBottomColor: "black",
+    borderBottomWidth: 3,
+    width: 100,
+  },
+  add: {
+    width: 24,
+    height: 24,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  addImage: {
+    width: 24,
+    height: 24,
+  },
+  listContainer: {
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    gap: 7,
+  },
+  userImagesContainer: {
+    flex: 1,
+    height: 82,
+    alignItems: "center",
+    borderRadius: 15,
+    shadowColor: "grey",
+    elevation: 4,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    backgroundColor: "#fff",
+    marginBottom: 7,
+  },
+  userImages: {
+    overflow: "hidden",
+    height: 82,
+    borderRadius: 15,
   },
 });
 
