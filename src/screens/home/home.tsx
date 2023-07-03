@@ -49,7 +49,7 @@ const Home = ({ navigation }: Props) => {
   const insets = useSafeAreaInsets();
   const [search, setSearch] = useState("");
   return (
-    <View style={[styles.container, { paddingTop: insets.top + 48 }]}>
+    <View style={styles.container}>
       <Map />
       <View style={styles.searchContainer}>
         <Input
