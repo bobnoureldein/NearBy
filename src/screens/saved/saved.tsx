@@ -47,7 +47,7 @@ const Saved = ({ navigation }: Props) => {
   return (
     <ScrollView
       contentContainerStyle={styles.containerStyle}
-      style={[styles.container, { paddingTop: insets.top + 48 }]}
+      style={styles.container}
     >
       {data.map((item, index) => (
         <PlaceCard imageSource={item.image} />
