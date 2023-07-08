@@ -17,7 +17,10 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({ label, imageSource, containerStyle }) => {
   return (
-    <TouchableOpacity style={[styles.button, containerStyle]}>
+    <TouchableOpacity
+      style={[styles.button, containerStyle]}
+      hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+    >
       <Image source={imageSource} style={styles.image} />
       <Text style={styles.label}>{label}</Text>
     </TouchableOpacity>
