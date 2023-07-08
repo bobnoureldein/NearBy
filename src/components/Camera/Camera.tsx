@@ -42,10 +42,18 @@ const Camera: React.FC<CameraProps> = ({ onPictureTaken }) => {
         }}
         captureAudio={false}
       />
-      <TouchableOpacity style={styles.button} onPress={toggleFlash}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={toggleFlash}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+      >
         <View style={styles.flashIcon} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.captureButton} onPress={takePicture} />
+      <TouchableOpacity
+        style={styles.captureButton}
+        onPress={takePicture}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+      />
     </View>
   );
 };
