@@ -1,10 +1,10 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AfterLoginStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-
+import NotificationBar from "../../components/Notification/notification";
 type NotificationsScreenNavigationProp = StackNavigationProp<
   AfterLoginStackParamList,
   "Notifications"
@@ -20,7 +20,11 @@ const Notifications = ({ navigation }: Props) => {
     <ScrollView
       contentContainerStyle={styles.containerStyle}
       style={styles.container}
-    ></ScrollView>
+    >
+      <NotificationBar />
+      <NotificationBar />
+      <NotificationBar />
+    </ScrollView>
   );
 };
 
