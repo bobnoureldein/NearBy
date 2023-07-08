@@ -85,7 +85,10 @@ const CustomComponent: React.FC = () => {
         </Animated.View>
       </View>
       {showHiddenComponent && (
-        <TouchableOpacity onPress={handlePress}>
+        <TouchableOpacity
+          onPress={handlePress}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
           <Image
             source={require("../../images/trash.png")}
             style={{ height: 45, width: 45, alignSelf: "flex-start" }}
