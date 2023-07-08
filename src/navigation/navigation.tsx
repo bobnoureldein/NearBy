@@ -23,6 +23,7 @@ import Profile from "../screens/profile/profile";
 import Saved from "../screens/saved/saved";
 import More from "../screens/more/more";
 import PrivacyPolicy from "../screens/privacyPolicy/privacyPolicy";
+import Notifications from "../screens/notifications/notifications";
 import ArrowLeft from "../images/arrow-left";
 import Icon from "react-native-vector-icons/Feather";
 import { mainColor, width } from "../constants/constants";
@@ -44,6 +45,7 @@ export type AfterLoginStackParamList = {
   UserStack: undefined;
   Home: undefined;
   PrivacyPolicy: undefined;
+  Notifications: undefined;
 };
 
 export type BottomTabStackParamList = {
@@ -163,6 +165,13 @@ const AfterLoginNavigator = () => {
           headerShown: true,
         }}
       />
+      <AfterLoginStack.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{
+          headerShown: true,
+        }}
+      />
     </AfterLoginStack.Navigator>
   );
 };
@@ -175,8 +184,11 @@ const UserStack = () => {
           backgroundColor: "transparent",
         },
         headerTransparent: false,
-        headerRight: (props) => (
-          <TouchableOpacity style={{ marginRight: 20, flexDirection: "row" }}>
+        headerRight: ({ navigation }) => (
+          <TouchableOpacity
+            style={{ marginRight: 20, flexDirection: "row" }}
+            onPress={() => navigation.navigate("Notifications")}
+          >
             <Image
               source={require("../images/notification.png")}
               style={{ height: 24, width: 24 }}
