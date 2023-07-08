@@ -164,6 +164,7 @@ const AfterLoginNavigator = () => {
         component={PrivacyPolicy}
         options={{
           headerShown: true,
+          headerLeft: (props) => <BackIcon {...props} />, // Hide default back button
         }}
       />
       <AfterLoginStack.Screen
