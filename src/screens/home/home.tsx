@@ -4,10 +4,10 @@ import Map from "../../components/Map/map";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { BottomTabStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Input from "../../components/TextInput/textInput";
 import Icon from "react-native-vector-icons/Feather";
 import ImageButton from "../../components/ImageButton/imageButton";
+import BottomSheet from "../../components/bottomSheet/bottomSheet";
 
 type HomeScreenNavigationProp = StackNavigationProp<
   BottomTabStackParamList,
@@ -46,8 +46,18 @@ const data = [
 ];
 
 const Home = ({ navigation }: Props) => {
-  const insets = useSafeAreaInsets();
   const [search, setSearch] = useState("");
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openBottomSheet = () => {
+    setIsOpen(true);
+  };
+
+  const closeBottomSheet = () => {
+    setIsOpen(false);
+  };
+
   return (
     <View style={styles.container}>
       <Map />
@@ -62,7 +72,7 @@ const Home = ({ navigation }: Props) => {
           maxLength={77}
           containerStyle={styles.containerStyle}
         />
-        <TouchableOpacity style={styles.filterButton}>
+        <TouchableOpacity style={styles.filterButton} onPress={openBottomSheet}>
           <Image
             source={require("../../images/filter.png")}
             style={styles.image}
@@ -84,6 +94,7 @@ const Home = ({ navigation }: Props) => {
         ))}
       </ScrollView>
       <View style={styles.buttonContainer}></View>
+      <BottomSheet isOpen={isOpen} onClose={closeBottomSheet} />
     </View>
   );
 };
