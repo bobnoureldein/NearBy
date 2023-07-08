@@ -176,6 +176,7 @@ const AfterLoginNavigator = () => {
             <TouchableOpacity
               style={{ marginRight: 20, flexDirection: "row" }}
               onPress={() => console.log("first")}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             >
               <Text style={{ color: mainColor }}>Clear all</Text>
             </TouchableOpacity>
@@ -216,6 +217,7 @@ const UserStack = () => {
             <TouchableOpacity
               style={{ marginRight: 20, flexDirection: "row" }}
               onPress={() => navigation.navigate("Notifications")}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             >
               <Image
                 source={require("../images/notification.png")}
@@ -233,6 +235,7 @@ const UserStack = () => {
             <TouchableOpacity
               style={{ marginRight: 20, flexDirection: "row" }}
               onPress={() => navigation.navigate("Notifications")}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             >
               <Image
                 source={require("../images/notification.png")}
@@ -250,6 +253,7 @@ const UserStack = () => {
             <TouchableOpacity
               style={{ marginRight: 20, flexDirection: "row" }}
               onPress={() => navigation.navigate("Notifications")}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             >
               <Image
                 source={require("../images/notification.png")}
@@ -267,6 +271,7 @@ const UserStack = () => {
             <TouchableOpacity
               style={{ marginRight: 20, flexDirection: "row" }}
               onPress={() => navigation.navigate("Notifications")}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             >
               <Image
                 source={require("../images/notification.png")}
@@ -295,6 +300,7 @@ function MyTabBar({ state, descriptors, navigation }) {
           justifyContent: "center",
           alignItems: "center",
         }}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
       >
         <Image
           source={require("../images/Chat-icon.png")}
@@ -348,6 +354,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
           return (
             <TouchableOpacity
+              key={index}
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -362,7 +369,11 @@ function MyTabBar({ state, descriptors, navigation }) {
                 justifyContent: "space-around",
               }}
             >
-              <Icon name="home" size={20} />
+              <Icon
+                name="home"
+                size={20}
+                style={{ backgroundColor: isFocused ? "red" : "transparent" }}
+              />
               {isFocused && (
                 <Text
                   style={{
