@@ -11,7 +11,11 @@ interface CircleImageProps {
 const CircleImage: React.FC<CircleImageProps> = ({ onPress }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={onPress}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+      >
         <CameraIcon />
       </TouchableOpacity>
       <View style={styles.imageContainer}>
