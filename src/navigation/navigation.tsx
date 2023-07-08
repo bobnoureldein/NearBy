@@ -5,6 +5,7 @@ import {
   TransitionSpecs,
   TransitionPresets,
   createStackNavigator,
+  StackHeaderRightButtonProps,
 } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -170,6 +171,15 @@ const AfterLoginNavigator = () => {
         component={Notifications}
         options={{
           headerShown: true,
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 20, flexDirection: "row" }}
+              onPress={() => console.log("first")}
+            >
+              <Text style={{ color: mainColor }}>Clear all</Text>
+            </TouchableOpacity>
+          ), // Hide default back button
+          headerLeft: (props) => <BackIcon {...props} />, // Hide default back button
         }}
       />
     </AfterLoginStack.Navigator>
@@ -184,17 +194,6 @@ const UserStack = () => {
           backgroundColor: "transparent",
         },
         headerTransparent: false,
-        headerRight: ({ navigation }) => (
-          <TouchableOpacity
-            style={{ marginRight: 20, flexDirection: "row" }}
-            onPress={() => navigation.navigate("Notifications")}
-          >
-            <Image
-              source={require("../images/notification.png")}
-              style={{ height: 24, width: 24 }}
-            />
-          </TouchableOpacity>
-        ), // Hide default back button
         headerTitle: () => null,
         headerLeft: () => (
           <View style={{ marginLeft: 20, flexDirection: "row" }}>
@@ -208,10 +207,74 @@ const UserStack = () => {
       }}
       tabBar={(props) => <MyTabBar {...props} />}
     >
-      <BottomTabStack.Screen name="Home" component={Home} />
-      <BottomTabStack.Screen name="Profile" component={Profile} />
-      <BottomTabStack.Screen name="Saved" component={Saved} />
-      <BottomTabStack.Screen name="More" component={More} />
+      <BottomTabStack.Screen
+        name="Home"
+        component={Home}
+        options={({ navigation }: StackHeaderRightButtonProps) => ({
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 20, flexDirection: "row" }}
+              onPress={() => navigation.navigate("Notifications")}
+            >
+              <Image
+                source={require("../images/notification.png")}
+                style={{ height: 24, width: 24 }}
+              />
+            </TouchableOpacity>
+          ), // Hide default back button
+        })}
+      />
+      <BottomTabStack.Screen
+        name="Profile"
+        component={Profile}
+        options={({ navigation }: StackHeaderRightButtonProps) => ({
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 20, flexDirection: "row" }}
+              onPress={() => navigation.navigate("Notifications")}
+            >
+              <Image
+                source={require("../images/notification.png")}
+                style={{ height: 24, width: 24 }}
+              />
+            </TouchableOpacity>
+          ), // Hide default back button
+        })}
+      />
+      <BottomTabStack.Screen
+        name="Saved"
+        component={Saved}
+        options={({ navigation }: StackHeaderRightButtonProps) => ({
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 20, flexDirection: "row" }}
+              onPress={() => navigation.navigate("Notifications")}
+            >
+              <Image
+                source={require("../images/notification.png")}
+                style={{ height: 24, width: 24 }}
+              />
+            </TouchableOpacity>
+          ), // Hide default back button
+        })}
+      />
+      <BottomTabStack.Screen
+        name="More"
+        component={More}
+        options={({ navigation }: StackHeaderRightButtonProps) => ({
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 20, flexDirection: "row" }}
+              onPress={() => navigation.navigate("Notifications")}
+            >
+              <Image
+                source={require("../images/notification.png")}
+                style={{ height: 24, width: 24 }}
+              />
+            </TouchableOpacity>
+          ), // Hide default back button
+        })}
+      />
     </BottomTabStack.Navigator>
   );
 };
