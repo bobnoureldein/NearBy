@@ -100,7 +100,10 @@ const Profile = ({ navigation }: Props) => {
           <Text style={styles.galleryText}>Gallery</Text>
           <View style={styles.divider} />
         </View>
-        <TouchableOpacity style={styles.add}>
+        <TouchableOpacity
+          style={styles.add}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
           <Image
             source={require("../../images/add.png")}
             style={styles.addImage}
