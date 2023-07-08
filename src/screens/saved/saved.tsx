@@ -50,7 +50,7 @@ const Saved = ({ navigation }: Props) => {
       style={styles.container}
     >
       {data.map((item, index) => (
-        <PlaceCard imageSource={item.image} />
+        <PlaceCard key={index} imageSource={item.image} />
       ))}
     </ScrollView>
   );
