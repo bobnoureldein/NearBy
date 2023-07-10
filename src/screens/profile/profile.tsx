@@ -58,9 +58,12 @@ const Profile = ({ navigation }: Props) => {
                 style={styles.userImage}
               />
             </View>
-            <View style={styles.count}>
+            <TouchableOpacity
+              style={styles.count}
+              onPress={() => navigation.navigate("Followers")}
+            >
               <Text>4.5k followers</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.lowerContainer}>
