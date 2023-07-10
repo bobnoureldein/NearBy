@@ -1,18 +1,19 @@
-import Camera from "../../components/Camera/Camera";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { AfterLoginStackParamList } from "../../navigation/navigation";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import CameraComponent from "./CameraComponent";
 
-type CameraScreenNavigationProp = StackNavigationProp<
-  AfterLoginStackParamList,
-  "Camera"
->;
-
-type Props = {
-  navigation: CameraScreenNavigationProp;
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <CameraComponent />
+    </View>
+  );
 };
 
-const CameraScreen = ({ navigation }: Props) => {
-  return <Camera onPictureTaken={() => navigation.navigate("CompleteCode")} />;
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
-export default CameraScreen;
+export default App;
