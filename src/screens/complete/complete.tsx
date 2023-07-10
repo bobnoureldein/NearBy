@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, ScrollView } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
