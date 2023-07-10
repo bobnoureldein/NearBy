@@ -45,7 +45,7 @@ const Verify = ({ navigation }: Props) => {
             <CodeFieldComponent />
             <MainButton
               text="Verify"
-              onPress={() => navigation.navigate("CompleteCode")}
+              onPress={() => navigation.navigate("AfterLoginNavigator")}
             />
           </View>
           <TouchableOpacity>
