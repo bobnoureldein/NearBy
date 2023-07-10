@@ -25,6 +25,7 @@ import Saved from "../screens/saved/saved";
 import More from "../screens/more/more";
 import PrivacyPolicy from "../screens/privacyPolicy/privacyPolicy";
 import Notifications from "../screens/notifications/notifications";
+import Followers from "../screens/followers/followers";
 import ArrowLeft from "../images/arrow-left";
 import Icon from "react-native-vector-icons/Feather";
 import { mainColor, width } from "../constants/constants";
@@ -45,6 +46,7 @@ export type AfterLoginStackParamList = {
   MapScreen: undefined;
   UserStack: undefined;
   Home: undefined;
+  Followers: undefined;
   PrivacyPolicy: undefined;
   Notifications: undefined;
 };
@@ -168,6 +170,14 @@ const AfterLoginNavigator = () => {
         }}
       />
       <AfterLoginStack.Screen
+        name="Followers"
+        component={Followers}
+        options={{
+          headerShown: true,
+          headerLeft: (props) => <BackIcon {...props} />, // Hide default back button
+        }}
+      />
+      <AfterLoginStack.Screen
         name="Notifications"
         component={Notifications}
         options={{
@@ -232,17 +242,29 @@ const UserStack = () => {
         component={Profile}
         options={({ navigation }: StackHeaderRightButtonProps) => ({
           headerRight: () => (
-            <TouchableOpacity
-              style={{ marginRight: 20, flexDirection: "row" }}
-              onPress={() => navigation.navigate("Notifications")}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            >
-              <Image
-                source={require("../images/notification.png")}
-                style={{ height: 24, width: 24 }}
-              />
-            </TouchableOpacity>
-          ), // Hide default back button
+            <View style={{ flexDirection: "row" }}>
+              <TouchableOpacity
+                style={{ marginRight: 20, flexDirection: "row" }}
+                onPress={() => navigation.navigate("Notifications")}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              >
+                <Image
+                  source={require("../images/edit.png")}
+                  style={{ height: 24, width: 24 }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ marginRight: 20, flexDirection: "row" }}
+                onPress={() => navigation.navigate("Notifications")}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              >
+                <Image
+                  source={require("../images/notification.png")}
+                  style={{ height: 24, width: 24 }}
+                />
+              </TouchableOpacity>
+            </View>
+          ),
         })}
       />
       <BottomTabStack.Screen
