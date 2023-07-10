@@ -37,6 +37,7 @@ export type BeforeLoginStackParamList = {
   Next3: undefined;
   Login: undefined;
   VerifyCode: undefined;
+  AfterLoginNavigator: undefined;
 };
 
 export type AfterLoginStackParamList = {
@@ -64,7 +65,6 @@ export type UserStackParams = {
 
 const BeforeLoginStack = createStackNavigator<BeforeLoginStackParamList>();
 const AfterLoginStack = createStackNavigator<AfterLoginStackParamList>();
-
 const BottomTabStack = createBottomTabNavigator<BottomTabStackParamList>();
 
 const BeforeLoginNavigator = () => {
@@ -95,6 +95,10 @@ const BeforeLoginNavigator = () => {
       <BeforeLoginStack.Screen name="Next3" component={Next3} />
       <BeforeLoginStack.Screen name="Login" component={Login} />
       <BeforeLoginStack.Screen name="VerifyCode" component={VerifyCode} />
+      <BeforeLoginStack.Screen
+        name="AfterLoginNavigator"
+        component={AfterLoginNavigator}
+      />
     </BeforeLoginStack.Navigator>
   );
 };
@@ -414,7 +418,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 }
 
 function App() {
-  const [isUserLoggedIn, setUser] = useState(true);
+  const [isUserLoggedIn, setUser] = useState(false);
   return (
     <NavigationContainer>
       {isUserLoggedIn ? <AfterLoginNavigator /> : <BeforeLoginNavigator />}
