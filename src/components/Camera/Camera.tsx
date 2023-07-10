@@ -1,61 +1,43 @@
-import React, { useState, useRef } from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
-import { RNCamera } from "react-native-camera";
-import styles from "./styles";
+import React, { useEffect, useRef } from "react";
+import { View, StyleSheet } from "react-native";
+import { Camera, useCameraDevices } from "react-native-vision-camera/compat";
 
-interface CameraProps {
-  onPictureTaken: (data: string) => void;
-}
+const CameraComponent = () => {
+  const cameraRef = useRef();
+  const { cameraDevices, getCameraPermission } = useCameraDevices();
 
-const Camera: React.FC<CameraProps> = ({ onPictureTaken }) => {
-  const cameraRef = useRef<RNCamera>(null);
-  const [flashMode, setFlashMode] = useState(RNCamera.Constants.FlashMode.off);
+  useEffect(() => {
+    getCameraPermission();
+  }, []);
 
-  const takePicture = async () => {
-    if (cameraRef.current) {
-      const options = { quality: 0.5, base64: true };
-      const data = await cameraRef.current.takePictureAsync(options);
-      onPictureTaken(data.base64!);
-    }
-  };
+  if (!cameraDevices.length) {
+    return <View style={styles.container} />;
+  }
 
-  const toggleFlash = () => {
-    if (flashMode === RNCamera.Constants.FlashMode.off) {
-      setFlashMode(RNCamera.Constants.FlashMode.torch);
-    } else {
-      setFlashMode(RNCamera.Constants.FlashMode.off);
-    }
+  const handleCameraReady = () => {
+    console.log("Camera is ready!");
   };
 
   return (
     <View style={styles.container}>
-      <RNCamera
-        style={styles.preview}
+      <Camera
         ref={cameraRef}
-        type={RNCamera.Constants.Type.back}
-        flashMode={flashMode}
-        androidCameraPermissionOptions={{
-          title: "Permission to use camera",
-          message: "We need your permission to use your camera",
-          buttonPositive: "Ok",
-          buttonNegative: "Cancel",
-        }}
-        captureAudio={false}
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={toggleFlash}
-        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-      >
-        <View style={styles.flashIcon} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.captureButton}
-        onPress={takePicture}
-        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        style={styles.camera}
+        device={cameraDevices[0]}
+        onCameraReady={handleCameraReady}
       />
     </View>
   );
 };
 
-export default Camera;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#000",
+  },
+  camera: {
+    flex: 1,
+  },
+});
+
+export default CameraComponent;
