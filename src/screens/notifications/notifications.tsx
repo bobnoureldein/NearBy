@@ -5,6 +5,7 @@ import { AfterLoginStackParamList } from "../../navigation/navigation";
 import styles from "./styles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import NotificationBar from "../../components/Notification/notification";
+
 type NotificationsScreenNavigationProp = StackNavigationProp<
   AfterLoginStackParamList,
   "Notifications"
