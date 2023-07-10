@@ -1,13 +1,9 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import CameraComponent from "./CameraComponent";
+// import CameraComponent from "./CameraComponent";
 
 const App = () => {
-  return (
-    <View style={styles.container}>
-      <CameraComponent />
-    </View>
-  );
+  return <View style={styles.container}>{/* <CameraComponent /> */}</View>;
 };
 
 const styles = StyleSheet.create({
